@@ -1,0 +1,48 @@
+<p-panel>
+  <p-header> Listagem de Colaboradores </p-header>
+  <form>
+    <!-- <p-button type="button" label="Novo" (click)="onAdd()">
+      <i class="pi pi-plus"></i>
+    </p-button> -->
+    <div class="card" style="margin-top: 10px">
+      <p-table [value]="colaboradores" sortField="representative.name" sortMode="single" [lazy]="true"
+        [paginator]="true" [totalRecords]="totalRecords" [rows]="size" (onLazyLoad)="onChangePage($event)">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Idade</th>
+            <th>Ações</th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-colaborador>
+          <tr>
+            <td>{{ colaborador.nome }}</td>
+            <td>{{ colaborador.email }}</td>
+            <td>{{ colaborador.idade }}</td>
+            <td>
+              <p-button type="button" (click)="onView(colaborador.id)" title="Detalhes">
+                <i class="pi pi-ellipsis-h"></i>
+              </p-button>
+              <p-button type="button" (click)="onDelete(colaborador.id)" [style]="{ 'margin-left': '5px' }"
+                title="Exclui ">
+                <i class="pi pi-times"></i>
+              </p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </form>
+  <p-toast></p-toast>
+  <p-confirmDialog [transitionOptions]="'0ms'" acceptLabel="Sim" rejectLabel="Não"></p-confirmDialog>
+</p-panel>
+
+<div *ngIf="exibe">
+  <app-form [colaborador]="colaborador" (closeDialog)="closeDialog($event)"></app-form>
+</div>
+
+<div *ngIf=" exibe">
+  Teste OK
+</div>

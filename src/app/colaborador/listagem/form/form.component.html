@@ -1,0 +1,36 @@
+<p-dialog [(visible)]="exibe" (onShow)="fillEdits()" (onHide)="onHide()" [style]="{width: '40vw'}">
+  <p-header>
+    Informações do Colaborador
+  </p-header>
+  <form [formGroup]="formColaborador">
+    <div class="grid-container">
+      <label id="lbl-cpf">CPF</label>
+      <div id="edt-cpf">
+        <p-inputMask mask="999.999.999-99" formControlName="cpf" unmask="true"></p-inputMask>
+      </div>
+
+      <label id="lbl-nome">Nome</label>
+      <div id="edt-nome">
+        <input type="text" pInputText formControlName="nome" maxlength="50">
+      </div>
+
+      <label id="lbl-telefone">Telefone</label>
+      <div id="edt-telefone">
+        <input type="text" pInputText formControlName="telefone" maxlength="50">
+      </div>
+
+      <label id="lbl-email">Email</label>
+      <div id="edt-email">
+        <input type="text" pInputText formControlName="email" maxlength="50">
+      </div>
+
+      <label id="lbl-data-nascimento">Nascimento</label>
+      <div id="edt-data-nascimento">
+        <input type="text" pInputText formControlName="dataNascimento" maxlength="50">
+      </div>
+    </div>
+  </form>
+  <p-footer>
+    <p-button type="button" (click)="onCloseAction()" label="Fecha"></p-button>
+  </p-footer>
+</p-dialog>
